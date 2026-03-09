@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday</title>
+
+  <style>
+    body {
+      background-image: url("gmrotherstreet.jpg");
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .birthday-text {
+      text-align: center;
+      margin-top: 100px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      font-family: Arial, sans-serif;
+    }
+
+    .birthday-text h1 {
+      font-size: 48px;
+      margin: 20px;
+    }
+
+    .birthday-text p {
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="birthday-text">
+  <h1>Happy Birthday!</h1>
+
+  <p>
+  Free your calendar and brush up on your fire hazard awareness:
+  you and a chosen victim are going to little old Stratford-Upon-Avon
+  on Friday 8th May to watch a George Michael tribute Fastlove their
+  way to a bonfire.
+
+  <br><br>
+
+  Tickets to be sent in imminent future.
+  </p>
+</div>
+
+<audio controls autoplay>
+  <source src="freedomaudio.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+var duration = 15 * 1000;
+var animationEnd = Date.now() + duration;
+var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+var interval = setInterval(function() {
+  var timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  var particleCount = 50 * (timeLeft / duration);
+
+  confetti(Object.assign({}, defaults, {
+    particleCount,
+    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+  }));
+
+  confetti(Object.assign({}, defaults, {
+    particleCount,
+    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+  }));
+
+}, 250);
+
+</script>
+</body>
+</html>
